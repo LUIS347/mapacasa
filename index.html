@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8" />
+<head>
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+<style>
+#map {
+width: 100%;
+height: 600px;
+box-shadow: 5px 5px 5px #888;
+}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+
+var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
++ 'contributors', maxZoom: 18
+});
+
+var map = L.map('map', {
+center: [1.6201816037286574, -75.60988426208498],
+zoom: 15,
+layers: osm,
+scrollWheelZom: true,
+});
+
+var marker = L.marker([ 1.6171401151561196, -75.60538627087278],{
+draggable: false,
+title: 'CLICK AQUI'
+}).addTo(map)
+.bindPopup('CASA')
+.openPopup();
+
+var marker2 = L.marker([ 1.615107, -75.613809],{
+draggable: false,
+title: 'CLICK AQUI'
+}).addTo(map)
+.bindPopup('ALCALDIA')
+.openPopup();
+
+var marker3 = L.marker([ 1.614986, -75.613307],{
+draggable: false,
+title: 'CLICK AQUI'
+}).addTo(map)
+.bindPopup('PLAZA SANTANDER')
+.openPopup();
+
+var marker4 = L.marker([ 1.6201644395950225, -75.60429192960078],{
+draggable: false,
+title: 'CLICK AQUI'
+}).addTo(map)
+.bindPopup('Universidad Amazonia')
+.openPopup();
+
+var circle = L.circle([1.615107, -75.613809], 500, { color: 'gray',
+fillColor: '#FF8',
+fillOpacity: 0.5
+}).addTo(map)
+circle.bindPopup("CENTRO DE FLORENCIA ");
+
+var polygon = L.polygon([
+[1.6147228020276463, -75.61286687850954],
+[1.6145404842322766, -75.61349987983705],
+[1.615162509584444,  -75.61370372772218],
+[1.6153662764687597, -75.61305999755861]
+]).addTo(map)
+.bindPopup ('PLAZA SANTANDER');
+
+
+var point18 = new L.latLng(1.6201644395950225, -75.60429192960078);
+var point17 = new L.latLng(1.62014299050142, -75.60504294812077);
+var point16 = new L.latLng(1.6199928468398028, -75.60532189785675);
+var point15 = new L.latLng(1.620078643219213, -75.60536481320075);
+var point14 = new L.latLng(1.6195638648881616, -75.60579396664076);
+var point13 = new L.latLng(1.6192206792614792, -75.60613728939275);
+var point12 = new L.latLng(1.6191777810540584, -75.60630895076875);
+var point11 = new L.latLng(1.6189632900033293, -75.60643769680074);
+var point10 = new L.latLng(1.6186201042749582, -75.60630895076875);
+var point9 = new L.latLng(1.6181482238036167, -75.60605145870474);
+var point8 = new L.latLng(1.617075767778674, -75.60540772854476);
+var point7 = new L.latLng(1.6171401151561196, -75.60538627087278);
+
+
+
+var latlngs = [ point7, point8, point9, point10, point11, point12, point13, point14, point15, point16, point17, point18];
+
+var polyline = L.polyline(
+latlngs, {color: 'blue'}
+)
+.addTo(map)
+.bindPopup (' CASA ->  A LA UNIVERSIDAD ');
+map.doubleClickZoom.disable()
+
+L.control.scale({
+position: 'bottomright',
+imperial: false
+}).addTo(map);
+</script>
+</body>
+</html>
